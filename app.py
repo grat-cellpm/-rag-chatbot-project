@@ -2,6 +2,13 @@ import streamlit as st
 import os
 import sys
 
+# Inject Streamlit secrets into environment variables so backend catches it
+try:
+    if "GROQ_API_KEY" in st.secrets:
+        os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+except Exception:
+    pass
+
 # Add project root to path robustly
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, '..')) if os.path.basename(current_dir) == 'ui' else current_dir
