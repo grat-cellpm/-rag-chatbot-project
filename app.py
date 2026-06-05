@@ -34,6 +34,11 @@ def get_backend():
 
 middleware, pipeline = get_backend()
 
+# CRITICAL DEBUGGING WARNING
+if os.environ.get("GROQ_API_KEY", "your_groq_api_key_here") == "your_groq_api_key_here":
+    st.error("🚨 CRITICAL ERROR: GROQ_API_KEY is missing! Streamlit cannot find your secret key. Please add it to Streamlit Secrets (Manage App -> Settings -> Secrets) exactly as: GROQ_API_KEY=\"gsk_...\"")
+
+
 # Custom CSS for styling strictly matching the provided image
 st.markdown("""
 <style>
