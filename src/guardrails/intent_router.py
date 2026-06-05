@@ -50,5 +50,5 @@ Intent:"""
                 logger.warning(f"Unexpected intent output: '{intent}'. Defaulting to ADVISORY.")
                 return "ADVISORY"
         except Exception as e:
-            logger.error(f"Intent classification failed: {e}. Defaulting to ADVISORY.")
-            return "ADVISORY"
+            logger.error(f"Intent classification failed: {e}. Raising exception for debugging.")
+            raise e
